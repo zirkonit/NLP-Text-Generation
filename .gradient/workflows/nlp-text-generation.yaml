@@ -27,9 +27,7 @@ jobs:
         type: volume
     uses: git-checkout@v1
     with:
-      # url: https://github.com/gradient-ai/NLP-Text-Generation
-      url: context.event.github.url
-      ref: context.event.github.ref
+      url: https://github.com/zirkonit/this-word-does-not-exist
     
 
   generateText:
@@ -47,12 +45,14 @@ jobs:
     uses: script@v1
     with:
       script: |-
-        cp -R /inputs/repo /nlp
-        cd /nlp
-        pip3 install -U transformers
-        python3 nlp_text_generation.py
-        mv output.txt /outputs/generatedText
-        ls "-aFlR" /outputs/generatedText
+        # cp -R /inputs/repo /nlp
+        # cd /nlp
+        curl https://storage.googleapis.com/this-word-does-not-exist-models/forward-dictionary-model-v1.tar.gz | tar -xz
+        curl https://storage.googleapis.com/this-word-does-not-exist-models/inverse-dictionary-model-v1.tar.gz | tar -xz
+        curl https://storage.googleapis.com/this-word-does-not-exist-models/forward-urban-dictionary-model-v1.tar.gz | tar -xz
+        curl -O https://storage.googleapis.com/this-word-does-not-exist-models/blacklist.pickle.gz && gunzip blacklist.pickle.gz
+        pip3 install -U transformers=2.8.0 stanza
+        python3 test.py
       image: paperspace/transformers-gpu:0.4.0
 
 # Appendix: Extra details
