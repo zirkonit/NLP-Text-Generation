@@ -51,7 +51,7 @@ jobs:
         curl https://storage.googleapis.com/this-word-does-not-exist-models/inverse-dictionary-model-v1.tar.gz | tar -xz
         curl https://storage.googleapis.com/this-word-does-not-exist-models/forward-urban-dictionary-model-v1.tar.gz | tar -xz
         curl -O https://storage.googleapis.com/this-word-does-not-exist-models/blacklist.pickle.gz && gunzip blacklist.pickle.gz
-        pip3 install -U transformers==2.8.0 stanza
+        pip3 install -U transformers==2.8.0 stanza bs4
         python3 test.py
       image: paperspace/transformers-gpu:0.4.0
 
