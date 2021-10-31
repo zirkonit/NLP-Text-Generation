@@ -64,4 +64,3 @@ jobs:
 # The generateText job is OK on C5 (CPU) or P4000 (GPU) but will fail on C3,
 # because that instance type has insufficient memory
 # The output dataset used is "demo-dataset", which is auto-generated in Gradient for each team
-# This avoids requiring the creation of an output dataset before the YAML is run
